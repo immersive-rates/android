@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="4dp"
+    android:paddingBottom="11dp"
+    >
+
+    <LinearLayout
+        android:id="@+id/coin_icon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/label_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:breakStrategy="high_quality"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/coin_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="London is the capital of Great Britain" />
+
+    <TextView
+        android:id="@+id/hosted_on"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Material3.ActionBar.Subtitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ping_text"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/coin_icon"
+        app:layout_constraintTop_toBottomOf="@+id/updated_interval_text"
+        tools:text="@string/hosted_on" />
+
+    <TextView
+        android:id="@+id/updated_interval_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Material3.ActionBar.Subtitle"
+        app:layout_constraintBottom_toTopOf="@+id/hosted_on"
+        app:layout_constraintEnd_toStartOf="@+id/ping_text"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/coin_icon"
+        app:layout_constraintTop_toBottomOf="@+id/label_text"
+        android:text="Updated every day" />
+
+    <RadioButton
+        android:id="@+id/ping_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/updated_interval_text"
+        app:layout_constraintEnd_toEndOf="@+id/label_text"
+        app:layout_constraintTop_toTopOf="@+id/updated_interval_text" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/ping_text"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="100ms"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/updated_interval_text"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/label_text"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/updated_interval_text" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

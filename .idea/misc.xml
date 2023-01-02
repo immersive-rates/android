@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/drawable/background_chip_selected_first.xml" value="0.236" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/drawable/ic_baseline_autorenew_24.xml" value="0.187" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/drawable/ic_baseline_star_border_24.xml" value="0.2985" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1565" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/drawable/repository_icon_crypto_coin.xml" value="0.2215" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/drawable/repository_icon_fiat_coin.xml" value="0.2215" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/drawable/repository_icon_multi.xml" value="0.1485" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/drawable/repository_icon_ашфе_coin.xml" value="0.2215" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout-land/activity_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/activity_currency.xml" value="0.3333333333333333" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/activity_currency_curse.xml" value="0.22" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/activity_exchange.xml" value="0.4466666666666667" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/activity_exchanger.xml" value="0.3333333333333333" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/activity_main_coordin.xml" value="0.14666666666666667" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/activity_main_screen_full.xml" value="0.3333333333333333" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/activity_rate.xml" value="0.12" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/activity_repositories.xml" value="0.30833333333333335" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/activity_select_repository.xml" value="0.2539546814878153" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/activity_splash.xml" value="0.250738708315745" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/bitcoin_coin.xml" value="0.309375" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/bitcoin_usd_coins.xml" value="0.30833333333333335" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/chip_currency.xml" value="0.309375" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/currency_chip.xml" value="0.309375" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/currency_chip_pinned.xml" value="0.309375" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/currency_holder.xml" value="0.2539546814878153" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/exchange_chip.xml" value="0.5" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/fiat_coin.xml" value="0.309375" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/fragment_activity_main.xml" value="0.17452402538531278" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/item_currenct_curse.xml" value="0.3333333333333333" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/item_exchange_history.xml" value="0.4466666666666667" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/item_exchange_history_new.xml" value="0.3333333333333333" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/l.xml" value="0.1958295557570263" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/repository_item.xml" value="0.3333333333333333" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/repository_item_1.xml" value="0.3318435754189944" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/test_main_anim.xml" value="0.22" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/text_view.xml" value="0.14754098360655737" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/usd_coin.xml" value="0.30833333333333335" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/view_exchange.xml" value="0.16666666666666666" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/view_exchange_history.xml" value="0.30833333333333335" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/layout/view_selectable_statles_chip.xml" value="0.309375" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/menu/currency_menu.xml" value="0.309375" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/menu/main_bottom.xml" value="0.2501068832834545" />
+        <entry key="..\:/MyProjects/currencyquote/app/src/main/res/menu/main_menu.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.7333333333333334" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

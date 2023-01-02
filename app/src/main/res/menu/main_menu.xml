@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/refresh_data"
+        android:title="Update exchange data"
+        android:icon="@drawable/ic_baseline_refresh_24"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/connections"
+        android:title="Connections"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/email_feedback"
+        android:title="E-mail Feedback"
+        app:showAsAction="never" />
+
+<!--    <item-->
+<!--        android:id="@+id/portfolio"-->
+<!--        android:title="Portfolio"-->
+<!--        app:showAsAction="never" />-->
+
+<!--    <item-->
+<!--        android:id="@+id/downloads"-->
+<!--        android:title="Downloads"-->
+<!--        app:showAsAction="never" />-->
+
+<!--    <item-->
+<!--        android:id="@+id/refresh_source"-->
+<!--        android:title="Refresh"-->
+<!--        app:showAsAction="never" />-->
+
+<!--    <item-->
+<!--        android:id="@+id/settings"-->
+<!--        android:title="Settings"-->
+<!--        app:showAsAction="never" />-->
+
+<!--    <item-->
+<!--        android:id="@+id/features"-->
+<!--        android:title="Features"-->
+<!--        app:showAsAction="never" />-->
+
+<!--    <item-->
+<!--        android:id="@+id/release_notes"-->
+<!--        android:title="Release Notes"-->
+<!--        app:showAsAction="never" />-->
+
+<!--    <item-->
+<!--        android:id="@+id/premium"-->
+<!--        android:title="Premium"-->
+<!--        app:showAsAction="never" />-->
+
+<!--    <item-->
+<!--        android:id="@+id/about"-->
+<!--        android:title="About"-->
+<!--        app:showAsAction="never" />-->
+
+</menu>

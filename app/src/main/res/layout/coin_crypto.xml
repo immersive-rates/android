@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentBottom="true"
+    android:layout_margin="2dp"
+    android:background="@drawable/repository_icon_crypto_coin"
+    android:elevation="1dp"
+    android:gravity="center"
+    android:text="₿"
+    android:textColor="@color/white"
+    android:textSize="30dp"/>

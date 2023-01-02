@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "name": "Deploy Debug",
+            "type": "gradle",
+            "tasks": [
+                "installDebug"
+            ],
+            "environment": {
+                "JAVA_HOME": "D:\\Program Files\\Android\\Android Studio\\jre"
+            },
+        }
+    ]
+}
