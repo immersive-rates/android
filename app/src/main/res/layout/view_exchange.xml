@@ -48,7 +48,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:adjustViewBounds="true"
-            app:srcCompat="@drawable/ic_baseline_autorenew_24"
+            app:srcCompat="@drawable/ic_toggle_selected"
             android:rotation="60"
             android:rotationX="33"
             android:rotationY="-30"

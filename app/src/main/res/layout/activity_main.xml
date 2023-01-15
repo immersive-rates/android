@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/no_internet"
+        android:id="@+id/no_connection_banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ACACAC"
@@ -45,16 +45,28 @@
         tools:visibility="visible"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
+    <TextView
+        android:id="@+id/repository_error_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF6F00"
+        android:text="No internet connection. Cache in use"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/no_connection_banner"
+        tools:visibility="visible" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/primary_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        tools:name="iak.currencyquote.ui.ActivityExchange"
+        tools:name="dev.andrew.rates.ui.ActivityExchange"
         tools:layout="@layout/activity_exchanger"
         tools:tag="ActivityExchange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/no_internet" />
+        app:layout_constraintTop_toBottomOf="@+id/no_connection_banner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

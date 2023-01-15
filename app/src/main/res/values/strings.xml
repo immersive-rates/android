@@ -17,9 +17,13 @@
     <string name="short_fawazahmed0_label">FreeRates</string>
     <string name="short_moex_label">MOEX</string>
 
+    <string name="debug_label">Net</string>
+    <string name="short_debug_label">Net</string>
+
     <string name="hosted_on">%s</string>
     <string name="updated_every">Updating %s</string>
     <string name="crypto">Crypto</string>
     <string name="fiat">Fiat</string>
     <string name="platform_email_send_not_support">Email was not send. Not supported</string>
+    <string name="currency_pair_not_supported_by_repository">%s not supported currency pair (%s to %s)</string>
 </resources>
