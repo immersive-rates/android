@@ -12,10 +12,7 @@ import dev.andrew.rates.data.ICurrency
 import dev.andrew.rates.data.Rate
 import dev.andrew.rates.source.currency.*
 import dev.andrew.rates.source.exception.CurrencyPairNotSupported
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class CurrencySourceManager(
     private val appSettings: AppSettings
@@ -30,9 +27,16 @@ class CurrencySourceManager(
         Log.wtf(EXHANDLER_TAG, throwable)
     }
 
+    private fun catchRuntimeException(e: Throwable) {
+        if (e is CurrencyPairNotSupported) {
+            lastRuntimeExceptionLive.postValue(e)
+        }
+    }
+
     private val ioCoroutineScope = CoroutineScope(Dispatchers.IO + exHandler)
 
     private val mutableCurrentRepositoryLive: MutableLiveData<ICurrencySource> = MutableLiveData()
+    private var currentRepository: ICurrencySource? = null
     val currentRepositoryLive: LiveData<ICurrencySource> = mutableCurrentRepositoryLive
 
     private val registeredSourceClassById = HashMap<Int, Class<out ICurrencySource>>()
@@ -40,12 +44,6 @@ class CurrencySourceManager(
 
     private val lastRuntimeExceptionLive = MutableLiveData<Exception>()
     val lastRuntimeException: LiveData<Exception> = lastRuntimeExceptionLive
-
-    private fun catchRuntimeException(e: Throwable) {
-        if (e is CurrencyPairNotSupported) {
-            lastRuntimeExceptionLive.postValue(e)
-        }
-    }
 
     private fun getAvailableCurrencies(repo: ICurrencySource): List<ICurrency>? {
         try {
@@ -79,27 +77,44 @@ class CurrencySourceManager(
         restoreLastUsedSource()
     }
 
-    val fiatCurrencyLive: LiveData<List<Fiat>> = MediatorLiveData<List<Fiat>>().apply {
+    private val currencyListLive: LiveData<List<ICurrency>?> = MediatorLiveData<List<ICurrency>?>().apply {
         addSource(currentRepositoryLive) { repo ->
+            currentRepository = repo
+            postValue(emptyList())
             ioCoroutineScope.launch {
-                postValue(if (repo.getInfo().isSupportFiat) {
-                    getAvailableCurrencies(repo)?.filterIsInstance<Fiat>() ?: emptyList()
-                } else {
-                    emptyList()
-                })
+                var currencyList: List<ICurrency>? = null
+                while (currencyList == null) {
+                    currencyList = getAvailableCurrencies(repo)
+                    delay(1000)
+                }
+                postValue(currencyList)
             }
         }
     }
 
+    /*
+        Return: list or null
+     */
+    val fiatCurrencyLive: LiveData<List<Fiat>> = MediatorLiveData<List<Fiat>>().apply {
+        addSource(currencyListLive) { currencyList ->
+            postValue(if (getInfo().isSupportFiat) {
+                currencyList?.filterIsInstance<Fiat>()
+            } else {
+                null
+            })
+        }
+    }
+
+    /*
+        Return: list or null
+     */
     val cryptoCurrencyLive: LiveData<List<Crypto>> = MediatorLiveData<List<Crypto>>().apply {
-        addSource(currentRepositoryLive) { repo ->
-            ioCoroutineScope.launch {
-                postValue(if (repo.getInfo().isSupportCrypto) {
-                    getAvailableCurrencies(repo)?.filterIsInstance<Crypto>() ?: emptyList()
-                } else {
-                    emptyList()
-                })
-            }
+        addSource(currencyListLive) { currencyList ->
+            postValue(if (getInfo().isSupportCrypto) {
+                currencyList?.filterIsInstance<Crypto>()
+            } else {
+                null
+            })
         }
     }
 

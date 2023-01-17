@@ -52,15 +52,21 @@ class RecCurrencyAdapter: RecyclerView.Adapter<RecCurrencyAdapter.CurrencyHolder
 
             when(adapterData.carriage) {
                 GlobalExchangeViewModel.CurrencyCarriage.PRIMARY -> {
-                    binding.chip.isChecked = true
+                    if (!binding.chip.isChecked) {
+                        binding.chip.isChecked = true
+                    }
                     binding.chip.bindPrimaryCSelectionIndicator()
                 }
                 GlobalExchangeViewModel.CurrencyCarriage.SECONDARY -> {
-                    binding.chip.isChecked = true
+                    if (!binding.chip.isChecked) {
+                        binding.chip.isChecked = true
+                    }
                     binding.chip.bindSecondaryCSelectionIndicator()
                 }
                 null -> {
-                    binding.chip.isChecked = false
+                    if (binding.chip.isChecked) {
+                        binding.chip.isChecked = false
+                    }
                     binding.chip.unbindSelectionIndicator()
                 }
             }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
@@ -63,30 +64,6 @@ class MainActivity(
 
         Navigator(supportFragmentManager).toExchange()
 
-//        binding.toolbar.setOnMenuItemClickListener {
-//            return@setOnMenuItemClickListener when(it.itemId) {
-//                R.id.connections -> {
-//                    navigateToRepositoryList()
-//                    true
-//                }
-//                R.id.email_feedback -> {
-//                    openEMailIntent()
-//                    true
-//                }
-//                else -> {
-//                    false
-//                }
-//            }
-//        }
-
-//        lifecycleScope.launch {
-//            HumanisedTimeHelper.humanisedTimeFlow(
-//                Calendar.getInstance(TimeZone.GMT_ZONE).timeInMillis
-//            ).flowWithLifecycle(lifecycle).collect {
-//                    binding.toolbar.subtitle = "Cached at $it"
-//                }
-//        }
-
         globalActivityViewModel.onFromCurrencyTap.observe(this) {
             navigateToCurrencyFragment()
         }
@@ -115,17 +92,11 @@ class MainActivity(
 
         currencySourceManager.lastRuntimeException.observe(this) {
             if (it is CurrencyPairNotSupported) {
-//                Toast.makeText(this, getString(R.string.currency_pair_not_supported_by_repository,
-//                    getString(currencySourceManager.currentRepositoryLive.value?.getInfo()?.labelRes ?: 0),
-//                    it.first.name,
-//                    it.second.name
-//                ), Toast.LENGTH_LONG).show()
-                binding.repositoryErrorBanner.text = getString(R.string.currency_pair_not_supported_by_repository,
+                Toast.makeText(this, getString(R.string.currency_pair_not_supported_by_repository,
                     getString(currencySourceManager.currentRepositoryLive.value?.getInfo()?.labelRes ?: 0),
                     it.first.name,
                     it.second.name
-                )
-                binding.repositoryErrorBanner.isVisible = true
+                ), Toast.LENGTH_LONG).show()
             }
         }
     }

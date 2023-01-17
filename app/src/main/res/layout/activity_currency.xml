@@ -45,20 +45,31 @@
             app:srcCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_fiat"
+    <RelativeLayout
+        android:id="@+id/fiat_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginStart="11dp"
         android:layout_marginEnd="11dp"
-        android:layout_weight="0.5"
-        android:visibility="gone"
-        tools:visibility="visible"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
-        tools:listitem="@layout/currency_chip"
-        tools:itemCount="100" />
+        android:layout_weight="0.5">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_fiat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            tools:itemCount="100"
+            tools:listitem="@layout/currency_chip" />
+
+        <ProgressBar
+            android:id="@+id/list_fiat_progress"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/crypto_lable_container"
@@ -86,20 +97,29 @@
             app:srcCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_crypto"
+    <RelativeLayout
+        android:id="@+id/crypto_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginStart="11dp"
         android:layout_marginEnd="11dp"
-        android:layout_weight="0.5"
-        android:visibility="gone"
-        tools:visibility="visible"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
-        tools:listitem="@layout/currency_chip"
-        tools:itemCount="100" />
+        android:layout_weight="0.5">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_crypto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            tools:listitem="@layout/currency_chip"
+            tools:itemCount="100" />
+
+        <ProgressBar
+            android:id="@+id/list_crypto_progress"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
 
 </LinearLayout>

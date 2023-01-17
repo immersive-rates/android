@@ -36,38 +36,50 @@ class CurrencyViewModel(
 
     fun getCryptoCurrencies() = repositoryManager.cryptoCurrencyLive
 
-    fun onCurrencyItemSelected(currency: ICurrency, isChecked: Boolean): Boolean {
+    fun onCurrencyItemSelected(target: ICurrency, isChecked: Boolean): Boolean {
         activity.clearSearchQuery()
+
         if (isChecked) {
             when(currencyCarriage.value) {
                 GlobalExchangeViewModel.CurrencyCarriage.PRIMARY -> {
-                    appSettings.lastUsedCurrencyFirst.value?.let { lastUsed ->
-                        if (lastUsed.name != currency.name)
-                            activity.clearCarriage(lastUsed)
+                    appSettings.lastUsedCurrencyFirst.value?.let { lastUsedCurrencyFirst ->
+                        activity.clearCarriage(lastUsedCurrencyFirst)
                     }
-                    appSettings.setLastUsedCurrencyFirst(currency)
-                    activity.setCarriage(currency, GlobalExchangeViewModel.CurrencyCarriage.PRIMARY)
+                    appSettings.setLastUsedCurrencyFirst(target)
                     shiftCarriage()
                 }
                 GlobalExchangeViewModel.CurrencyCarriage.SECONDARY -> {
-                    appSettings.lastUsedCurrencySecond.value?.let { lastUsed ->
-                        if (lastUsed.name != currency.name)
-                            activity.clearCarriage(lastUsed)
+                    appSettings.lastUsedCurrencySecond.value?.let { lastUsedCurrencySecond ->
+                        activity.clearCarriage(lastUsedCurrencySecond)
                     }
-                    appSettings.setLastUsedCurrencySecond(currency)
-                    activity.setCarriage(currency, GlobalExchangeViewModel.CurrencyCarriage.SECONDARY)
+                    appSettings.setLastUsedCurrencySecond(target)
                     shiftCarriage()
                 }
-                else -> {}
+                null -> {
+                }
             }
         } else {
-            if (appSettings.lastUsedCurrencyFirst.value?.name == currency.name) {
-                currencyCarriage.value = GlobalExchangeViewModel.CurrencyCarriage.PRIMARY
-            } else if (appSettings.lastUsedCurrencySecond.value?.name == currency.name) {
-                currencyCarriage.value = GlobalExchangeViewModel.CurrencyCarriage.SECONDARY
+            when(currencyCarriage.value) {
+                GlobalExchangeViewModel.CurrencyCarriage.PRIMARY -> {
+                    val lastUsedCurrencySecond = appSettings.lastUsedCurrencySecond.value
+                    if (lastUsedCurrencySecond?.name == target.name) {
+                        shiftCarriage()
+                    }
+
+                }
+                GlobalExchangeViewModel.CurrencyCarriage.SECONDARY -> {
+                    val lastUsedCurrencyFirst = appSettings.lastUsedCurrencyFirst.value
+                    if (lastUsedCurrencyFirst?.name == target.name) {
+                        shiftCarriage()
+                    }
+                }
+                null -> {
+                }
             }
+            activity.clearCarriage(target)
         }
-        return true
+
+        return false // returned not used
     }
 
     private fun shiftCarriage() {

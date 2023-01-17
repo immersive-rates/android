@@ -140,7 +140,7 @@ class RussianCentralBankRepository : ICurrencySource, ICachedCurrencySource  {
                 return valCurs.ValCurs
             }
         }
-        return emptyList()
+        return lastValCurs?.ValCurs ?: emptyList()
     }
 
     private fun calcRate(fromCurs: Valute, toCurs: Valute) =

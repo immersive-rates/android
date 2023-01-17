@@ -96,14 +96,6 @@ class ActivityCurrency : Fragment() {
                     4, RecyclerView.VERTICAL, false
                 )
             }
-
-            hideFiat.setOnClickListener {
-                listFiat.isVisible = !listFiat.isVisible
-            }
-
-            hideCrypto.setOnClickListener {
-                listCrypto.isVisible = !listCrypto.isVisible
-            }
         }
 
         globalEventsPresenter.currencyCarriage.observe(viewLifecycleOwner) {
@@ -117,26 +109,46 @@ class ActivityCurrency : Fragment() {
         super.onStart()
 
         presenter.getFiatCurrencies().observe(viewLifecycleOwner) {
-            if (it.isNotEmpty()) {
+            if (it == null) {
+                visibleFiatBlock = false
+                enableFiatListProgress(false)
+            } else if (it.isNotEmpty()) {
                 visibleFiatBlock = true
+                enableFiatListProgress(false)
                 fiatCurrencyAdapter.dataList = CurrencyHelper.sortFiatByPopularity(it)
                     .map { RecCurrencyAdapter.AdapterData(it) }
-            } else {
-                visibleFiatBlock = false
+            } else if(it.isEmpty()) {
+                visibleFiatBlock = true
+                enableFiatListProgress(true)
+                fiatCurrencyAdapter.dataList = emptyList()
             }
             bindCarriage()
         }
 
         presenter.getCryptoCurrencies().observe(viewLifecycleOwner) {
-            if (it.isNotEmpty()) {
+            if (it == null) {
+                visibleCryptoBlock = false
+                enableCryptoListProgress(false)
+            } else if (it.isNotEmpty()) {
                 visibleCryptoBlock = true
+                enableCryptoListProgress(false)
                 cryptoCurrencyAdapter.dataList = it
                     .map { RecCurrencyAdapter.AdapterData(it) }
-            } else {
-                visibleCryptoBlock = false
+            } else if(it.isEmpty()) {
+                visibleCryptoBlock = true
+                enableCryptoListProgress(true)
+                cryptoCurrencyAdapter.dataList = emptyList()
             }
             bindCarriage()
         }
+    }
+
+    fun enableFiatListProgress(isVisible: Boolean) {
+        binding.listFiatProgress.isVisible = isVisible
+    }
+
+    fun enableCryptoListProgress(isVisible: Boolean) {
+        binding.listCryptoProgress.isVisible = isVisible
     }
 
     private fun bindCarriage() {
@@ -153,14 +165,14 @@ class ActivityCurrency : Fragment() {
         get() = binding.fiatLableContainer.isVisible
         set(isVisible) = with(binding) {
             fiatLableContainer.isVisible = isVisible
-            listFiat.isVisible = isVisible
+            fiatContainer.isVisible = isVisible
         }
 
     var visibleCryptoBlock: Boolean
         get() = binding.cryptoLableContainer.isVisible
         set(isVisible) = with(binding) {
             cryptoLableContainer.isVisible = isVisible
-            listCrypto.isVisible = isVisible
+            cryptoContainer.isVisible = isVisible
         }
 
     fun setCarriage(currency: ICurrency, carriage: GlobalExchangeViewModel.CurrencyCarriage) {
