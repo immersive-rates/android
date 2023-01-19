@@ -9,6 +9,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.appupdate.AppUpdateOptions
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.UpdateAvailability
 import dev.andrew.rates.ConnectStatusManager
 import dev.andrew.rates.R
 import dev.andrew.rates.databinding.ActivityMainBinding
@@ -62,7 +66,11 @@ class MainActivity(
             }
         })
 
-        Navigator(supportFragmentManager).toExchange()
+        if (savedInstanceState == null) {
+            Navigator(supportFragmentManager).toExchange()
+            checkAndPlayUpdates()
+        }
+
 
         globalActivityViewModel.onFromCurrencyTap.observe(this) {
             navigateToCurrencyFragment()
@@ -97,6 +105,18 @@ class MainActivity(
                     it.first.name,
                     it.second.name
                 ), Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun checkAndPlayUpdates() {
+        val appUpdateManager = AppUpdateManagerFactory.create(this)
+        val appUpdateInfoTask = appUpdateManager.appUpdateInfo
+        appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
+                appUpdateManager.startUpdateFlow(appUpdateInfo, this,
+                    AppUpdateOptions.defaultOptions(AppUpdateType.FLEXIBLE))
             }
         }
     }

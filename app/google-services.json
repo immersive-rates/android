@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "335502986349",
+    "project_id": "excanger-app",
+    "storage_bucket": "excanger-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335502986349:android:c10038edcf3254f9a58364",
+        "android_client_info": {
+          "package_name": "dev.andrew.rates"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "335502986349-rqvb9earphkapf4p6t0r6v8ocuobmlib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvGDvuihfT7IIb5_CBTU5q5tCoWnjj5Nc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "335502986349-rqvb9earphkapf4p6t0r6v8ocuobmlib.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
