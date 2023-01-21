@@ -85,16 +85,13 @@ class MainActivity(
         }
 
         repositoryConnectionStatus.statusLive.observe(this) {
-            when(it) {
-                RepositoryConnectionStatus.Status.IDLE -> {
-                    binding.toolbar.title = getString(R.string.app_name)
-                }
-                RepositoryConnectionStatus.Status.UPDATING_DONE -> {
-                    binding.toolbar.title = getString(R.string.app_name)
-                }
-                else -> {
-                    binding.toolbar.title = it.name
-                }
+            binding.toolbar.title = when(it) {
+                RepositoryConnectionStatus.Status.IDLE -> getString(R.string.app_name)
+                RepositoryConnectionStatus.Status.CONNECTION_INPROGRESS -> getString(R.string.repo_conn_status_progress)
+                RepositoryConnectionStatus.Status.CONNECTION_FAIL -> getString(R.string.repo_conn_status_fail)
+                RepositoryConnectionStatus.Status.UPDATING_INPROGRESS -> getString(R.string.repo_upd_status_progress)
+                RepositoryConnectionStatus.Status.UPDATING_DONE -> getString(R.string.app_name)
+                RepositoryConnectionStatus.Status.UPDATING_FAIL -> getString(R.string.repo_upd_status_fail)
             }
         }
 

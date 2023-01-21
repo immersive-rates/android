@@ -26,4 +26,9 @@
     <string name="fiat">Fiat</string>
     <string name="platform_email_send_not_support">Email was not send. Not supported</string>
     <string name="currency_pair_not_supported_by_repository">%s not supported currency pair (%s to %s)</string>
+
+    <string name="repo_conn_status_progress">Connecting..</string>
+    <string name="repo_conn_status_fail">Connecting failed</string>
+    <string name="repo_upd_status_progress">Updating..</string>
+    <string name="repo_upd_status_fail">Updating failed</string>
 </resources>
