@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -50,9 +51,9 @@ dependencies {
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
     implementation("com.squareup.okhttp3:okhttp")
 
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.9.6'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.6'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.6'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.14.1'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.14.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.fragment:fragment-ktx:1.5.5'
@@ -63,6 +64,9 @@ dependencies {
 
     implementation 'com.google.android.play:app-update:2.0.1'
     implementation 'com.google.android.play:app-update-ktx:2.0.1'
+
+    implementation platform('com.google.firebase:firebase-bom:31.2.0')
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
