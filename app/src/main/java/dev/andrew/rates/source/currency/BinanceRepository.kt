@@ -33,20 +33,20 @@ class BinanceRepository: ICurrencySource, ICachedCurrencySource, IPingableSource
         )
     }
 
-    private class ExchangeInfoSymbol(
+    class ExchangeInfoSymbol(
         val baseAsset: String = ""
     )
 
-    private class ExchangeInfoSymbols(
+    class ExchangeInfoSymbols(
         val symbols: List<ExchangeInfoSymbol> = emptyList()
     )
 
-    private class TickerPriceBy(
+    class TickerPriceBy(
         val price: Float = 0f,
         val name: String = ""
     )
 
-    private class TickerPrice(
+    class TickerPrice(
         val price: Float = 0f,
         val symbol: String = ""
     )
