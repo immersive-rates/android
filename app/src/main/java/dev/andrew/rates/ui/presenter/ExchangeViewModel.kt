@@ -19,7 +19,7 @@ class ExchangeViewModel(
 ): ViewModel() {
 
     private var activity: ActivityExchange? = null
-    private lateinit var currencyCarriage: MutableLiveData<GlobalExchangeViewModel.CurrencyCarriage>
+    private lateinit var currencyCarriage: MutableLiveData<SharedExchangeViewModel.CurrencyCarriage>
     private var onCurrencyCountInputBlock = false
 
     private lateinit var historyAdapter: ExchangeHistoryAdapter
@@ -28,7 +28,7 @@ class ExchangeViewModel(
         this.activity = activity
     }
 
-    fun bindCurrencyCarriage(currencyCarriage: MutableLiveData<GlobalExchangeViewModel.CurrencyCarriage>) {
+    fun bindCurrencyCarriage(currencyCarriage: MutableLiveData<SharedExchangeViewModel.CurrencyCarriage>) {
         this.currencyCarriage = currencyCarriage
     }
 
@@ -116,11 +116,11 @@ class ExchangeViewModel(
     }
 
     fun onPrimarySelected() {
-        currencyCarriage.value = GlobalExchangeViewModel.CurrencyCarriage.PRIMARY
+        currencyCarriage.value = SharedExchangeViewModel.CurrencyCarriage.PRIMARY
     }
 
     fun onSecondSelected() {
-        currencyCarriage.value = GlobalExchangeViewModel.CurrencyCarriage.SECONDARY
+        currencyCarriage.value = SharedExchangeViewModel.CurrencyCarriage.SECONDARY
     }
 
     fun onInputFocusChange(hasFocus: Boolean) {

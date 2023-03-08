@@ -17,7 +17,7 @@ import dev.andrew.rates.data.ICurrency
 import dev.andrew.rates.helper.CurrencyHelper
 import dev.andrew.rates.ui.adapter.RecCurrencyAdapter
 import dev.andrew.rates.ui.presenter.CurrencyViewModel
-import dev.andrew.rates.ui.presenter.GlobalExchangeViewModel
+import dev.andrew.rates.ui.presenter.SharedExchangeViewModel
 import java.util.*
 
 class ActivityCurrency : Fragment() {
@@ -33,7 +33,7 @@ class ActivityCurrency : Fragment() {
     private lateinit var binding: ActivityCurrencyBinding
     private val presenter: CurrencyViewModel by viewModels()
 
-    private val globalEventsPresenter: GlobalExchangeViewModel by activityViewModels()
+    private val globalEventsPresenter: SharedExchangeViewModel by activityViewModels()
 
     private val sharedRecyclerPool = RecyclerView.RecycledViewPool()
     private lateinit var fiatCurrencyAdapter: RecCurrencyAdapter
@@ -175,7 +175,7 @@ class ActivityCurrency : Fragment() {
             cryptoContainer.isVisible = isVisible
         }
 
-    fun setCarriage(currency: ICurrency, carriage: GlobalExchangeViewModel.CurrencyCarriage) {
+    fun setCarriage(currency: ICurrency, carriage: SharedExchangeViewModel.CurrencyCarriage) {
         if (!fiatCurrencyAdapter.setCarriage(currency, carriage)) {
             cryptoCurrencyAdapter.setCarriage(currency, carriage)
         }

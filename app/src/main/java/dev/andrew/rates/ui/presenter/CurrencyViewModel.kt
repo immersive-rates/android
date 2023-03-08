@@ -18,13 +18,13 @@ class CurrencyViewModel(
 
     private lateinit var activity: ActivityCurrency
 
-    private lateinit var currencyCarriage: MutableLiveData<GlobalExchangeViewModel.CurrencyCarriage>
+`    private lateinit var currencyCarriage: MutableLiveData<SharedExchangeViewModel.CurrencyCarriage>
 
     fun bindActivity(activity: ActivityCurrency) {
         this.activity = activity
     }
 
-    fun bindCurrencyCarriage(currencyCarriage: MutableLiveData<GlobalExchangeViewModel.CurrencyCarriage>) {
+    fun bindCurrencyCarriage(currencyCarriage: MutableLiveData<SharedExchangeViewModel.CurrencyCarriage>) {
         this.currencyCarriage = currencyCarriage
     }
 
@@ -41,14 +41,14 @@ class CurrencyViewModel(
 
         if (isChecked) {
             when(currencyCarriage.value) {
-                GlobalExchangeViewModel.CurrencyCarriage.PRIMARY -> {
+                SharedExchangeViewModel.CurrencyCarriage.PRIMARY -> {
                     appSettings.lastUsedCurrencyFirst.value?.let { lastUsedCurrencyFirst ->
                         activity.clearCarriage(lastUsedCurrencyFirst)
                     }
                     appSettings.setLastUsedCurrencyFirst(target)
                     shiftCarriage()
                 }
-                GlobalExchangeViewModel.CurrencyCarriage.SECONDARY -> {
+                SharedExchangeViewModel.CurrencyCarriage.SECONDARY -> {
                     appSettings.lastUsedCurrencySecond.value?.let { lastUsedCurrencySecond ->
                         activity.clearCarriage(lastUsedCurrencySecond)
                     }
@@ -60,14 +60,14 @@ class CurrencyViewModel(
             }
         } else {
             when(currencyCarriage.value) {
-                GlobalExchangeViewModel.CurrencyCarriage.PRIMARY -> {
+                SharedExchangeViewModel.CurrencyCarriage.PRIMARY -> {
                     val lastUsedCurrencySecond = appSettings.lastUsedCurrencySecond.value
                     if (lastUsedCurrencySecond?.name == target.name) {
                         shiftCarriage()
                     }
 
                 }
-                GlobalExchangeViewModel.CurrencyCarriage.SECONDARY -> {
+                SharedExchangeViewModel.CurrencyCarriage.SECONDARY -> {
                     val lastUsedCurrencyFirst = appSettings.lastUsedCurrencyFirst.value
                     if (lastUsedCurrencyFirst?.name == target.name) {
                         shiftCarriage()
@@ -84,22 +84,22 @@ class CurrencyViewModel(
 
     private fun shiftCarriage() {
         when(currencyCarriage.value) {
-            GlobalExchangeViewModel.CurrencyCarriage.PRIMARY -> {
-                currencyCarriage.value = GlobalExchangeViewModel.CurrencyCarriage.SECONDARY
+            SharedExchangeViewModel.CurrencyCarriage.PRIMARY -> {
+                currencyCarriage.value = SharedExchangeViewModel.CurrencyCarriage.SECONDARY
             }
-            GlobalExchangeViewModel.CurrencyCarriage.SECONDARY -> {
-                currencyCarriage.value = GlobalExchangeViewModel.CurrencyCarriage.PRIMARY
+            SharedExchangeViewModel.CurrencyCarriage.SECONDARY -> {
+                currencyCarriage.value = SharedExchangeViewModel.CurrencyCarriage.PRIMARY
             }
             else -> {}
         }
     }
 
-    fun onCarriageChanged(carriage: GlobalExchangeViewModel.CurrencyCarriage?) {
+    fun onCarriageChanged(carriage: SharedExchangeViewModel.CurrencyCarriage?) {
         when(carriage) {
-            GlobalExchangeViewModel.CurrencyCarriage.PRIMARY -> {
+            SharedExchangeViewModel.CurrencyCarriage.PRIMARY -> {
                 activity.updatePrimaryChip()
             }
-            GlobalExchangeViewModel.CurrencyCarriage.SECONDARY -> {
+            SharedExchangeViewModel.CurrencyCarriage.SECONDARY -> {
                 activity.updateSecondaryChip()
             }
             else -> {}
@@ -108,13 +108,13 @@ class CurrencyViewModel(
 
     fun onFirstCurrencyUpdated(it: ICurrency?) {
         if (it != null) {
-            activity.setCarriage(it, GlobalExchangeViewModel.CurrencyCarriage.PRIMARY)
+            activity.setCarriage(it, SharedExchangeViewModel.CurrencyCarriage.PRIMARY)
         }
     }
 
     fun onSecondCurrencyUpdated(it: ICurrency?) {
         if (it != null) {
-            activity.setCarriage(it, GlobalExchangeViewModel.CurrencyCarriage.SECONDARY)
+            activity.setCarriage(it, SharedExchangeViewModel.CurrencyCarriage.SECONDARY)
         }
     }
 }

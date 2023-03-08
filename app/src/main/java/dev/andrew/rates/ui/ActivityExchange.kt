@@ -21,7 +21,7 @@ import dev.andrew.rates.helper.EditTextHelper
 import dev.andrew.rates.helper.bindPrimaryCIndicator
 import dev.andrew.rates.helper.bindSecondaryCIndicator
 import dev.andrew.rates.ui.presenter.ExchangeViewModel
-import dev.andrew.rates.ui.presenter.GlobalExchangeViewModel
+import dev.andrew.rates.ui.presenter.SharedExchangeViewModel
 
 
 class ActivityExchange : Fragment() {
@@ -36,7 +36,7 @@ class ActivityExchange : Fragment() {
 
     private val presenter: ExchangeViewModel by viewModels()
 
-    private val globalEventsPresenter: GlobalExchangeViewModel by activityViewModels()
+    private val globalEventsPresenter: SharedExchangeViewModel by activityViewModels()
 
     private lateinit var binding: ActivityExchangerBinding
 
@@ -196,11 +196,11 @@ class ActivityExchange : Fragment() {
 
         globalEventsPresenter.currencyCarriage.observe(viewLifecycleOwner) { carriage ->
             when (carriage) {
-                GlobalExchangeViewModel.CurrencyCarriage.PRIMARY -> {
+                SharedExchangeViewModel.CurrencyCarriage.PRIMARY -> {
                     focusSecondaryCurrency(false)
                     focusPrimaryCurrency(true)
                 }
-                GlobalExchangeViewModel.CurrencyCarriage.SECONDARY -> {
+                SharedExchangeViewModel.CurrencyCarriage.SECONDARY -> {
                     focusPrimaryCurrency(false)
                     focusSecondaryCurrency(true)
                 }

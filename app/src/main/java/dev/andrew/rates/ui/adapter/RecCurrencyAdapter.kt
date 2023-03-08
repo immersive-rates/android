@@ -14,7 +14,7 @@ import dev.andrew.rates.databinding.CurrencyChipBinding
 import dev.andrew.rates.helper.bindPrimaryCSelectionIndicator
 import dev.andrew.rates.helper.bindSecondaryCSelectionIndicator
 import dev.andrew.rates.helper.unbindSelectionIndicator
-import dev.andrew.rates.ui.presenter.GlobalExchangeViewModel
+import dev.andrew.rates.ui.presenter.SharedExchangeViewModel
 
 typealias RecOnChipClick = (ICurrency, Boolean) -> Boolean
 
@@ -37,7 +37,7 @@ class RecCurrencyAdapter: RecyclerView.Adapter<RecCurrencyAdapter.CurrencyHolder
 
     data class AdapterData(
         val currency: ICurrency,
-        var carriage: GlobalExchangeViewModel.CurrencyCarriage? = null
+        var carriage: SharedExchangeViewModel.CurrencyCarriage? = null
     )
 
     data class CurrencyHolder(
@@ -51,13 +51,13 @@ class RecCurrencyAdapter: RecyclerView.Adapter<RecCurrencyAdapter.CurrencyHolder
             }
 
             when(adapterData.carriage) {
-                GlobalExchangeViewModel.CurrencyCarriage.PRIMARY -> {
+                SharedExchangeViewModel.CurrencyCarriage.PRIMARY -> {
                     if (!binding.chip.isChecked) {
                         binding.chip.isChecked = true
                     }
                     binding.chip.bindPrimaryCSelectionIndicator()
                 }
-                GlobalExchangeViewModel.CurrencyCarriage.SECONDARY -> {
+                SharedExchangeViewModel.CurrencyCarriage.SECONDARY -> {
                     if (!binding.chip.isChecked) {
                         binding.chip.isChecked = true
                     }
@@ -95,7 +95,7 @@ class RecCurrencyAdapter: RecyclerView.Adapter<RecCurrencyAdapter.CurrencyHolder
         filter.filter(query)
     }
 
-    fun setCarriage(currency: ICurrency, carriage: GlobalExchangeViewModel.CurrencyCarriage?): Boolean {
+    fun setCarriage(currency: ICurrency, carriage: SharedExchangeViewModel.CurrencyCarriage?): Boolean {
         val name = currency.name
         dataList.forEachIndexed { index, adapterData ->
             if (adapterData.currency.name == name) {

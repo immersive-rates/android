@@ -3,7 +3,7 @@ package dev.andrew.rates.ui.presenter
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class GlobalExchangeViewModel: ViewModel() {
+class SharedExchangeViewModel: ViewModel() {
     enum class CurrencyCarriage {
         PRIMARY,
         SECONDARY

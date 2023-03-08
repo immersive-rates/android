@@ -22,7 +22,7 @@ import dev.andrew.rates.source.CurrencySourceManager
 import dev.andrew.rates.source.RepositoryConnectionStatus
 import dev.andrew.rates.source.exception.CurrencyPairNotSupported
 import dev.andrew.rates.ui.navigator.Navigator
-import dev.andrew.rates.ui.presenter.GlobalExchangeViewModel
+import dev.andrew.rates.ui.presenter.SharedExchangeViewModel
 
 class MainActivity(
     private val repositoryConnectionStatus: RepositoryConnectionStatus = SingletonAppObject.repositoryConnectionStatus,
@@ -33,7 +33,7 @@ class MainActivity(
         const val TAG = "MainActivity"
     }
 
-    private val globalActivityViewModel: GlobalExchangeViewModel by viewModels()
+    private val sharedActivityViewModel: SharedExchangeViewModel by viewModels()
 
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -72,11 +72,11 @@ class MainActivity(
         }
 
 
-        globalActivityViewModel.onFromCurrencyTap.observe(this) {
+        sharedActivityViewModel.onFromCurrencyTap.observe(this) {
             navigateToCurrencyFragment()
         }
 
-        globalActivityViewModel.onToCurrencyTap.observe(this) {
+        sharedActivityViewModel.onToCurrencyTap.observe(this) {
             navigateToCurrencyFragment()
         }
 
