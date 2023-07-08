@@ -22,9 +22,14 @@ import java.util.*
 
 class ActivityCurrency : Fragment() {
     companion object {
+        private const val ARGH_QUERY_HINT_STRI = "ARGH_QUERY_HINT_STRI"
         @JvmStatic
-        fun newInstance(): ActivityCurrency {
-            return ActivityCurrency()
+        fun newInstance(queryHint: String): ActivityCurrency {
+            return ActivityCurrency().also { activity ->
+                activity.arguments = Bundle().apply {
+                    putString(ARGH_QUERY_HINT_STRI, queryHint)
+                }
+            }
         }
 
         const val TAG = "ActivityCurrency"
@@ -60,7 +65,7 @@ class ActivityCurrency : Fragment() {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menu.clear()
                 menuInflater.inflate(R.menu.currency_menu, menu)
-                bindSearchViewMenu(menu)
+                bindSearchViewMenu(menu, arguments!!.getString(ARGH_QUERY_HINT_STRI)!!)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -197,12 +202,12 @@ class ActivityCurrency : Fragment() {
         searchView?.setQuery("", true)
     }
 
-    private fun bindSearchViewMenu(menu: Menu) {
+    private fun bindSearchViewMenu(menu: Menu, aQueryHint: String) {
         searchView = menu.findItem(R.id.action_search)?.actionView as? SearchView ?: return
 
         with(searchView!!) {
             requestFocus()
-            queryHint = Currency.getInstance(Locale.getDefault()).toString()
+            queryHint = aQueryHint
             isIconified = false
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String): Boolean {

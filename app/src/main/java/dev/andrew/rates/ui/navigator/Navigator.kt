@@ -17,10 +17,10 @@ class Navigator(
                 tag = ActivityExchange.TAG)
         }
     }
-    fun toCurrencies() {
+    fun toCurrencies(queryHint: String) {
         fragmentManager.beginTransaction()
             .replace(R.id.primary_container,
-                ActivityCurrency.newInstance(), ActivityCurrency.TAG)
+                ActivityCurrency.newInstance(queryHint), ActivityCurrency.TAG)
             .addToBackStack(ActivityCurrency.TAG)
             .commit()
     }

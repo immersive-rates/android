@@ -18,6 +18,7 @@ import dev.andrew.rates.R
 import dev.andrew.rates.databinding.ActivityMainBinding
 import dev.andrew.rates.di.SingletonAppObject
 import dev.andrew.rates.helper.EMailHelper
+import dev.andrew.rates.source.AppSettings
 import dev.andrew.rates.source.CurrencySourceManager
 import dev.andrew.rates.source.RepositoryConnectionStatus
 import dev.andrew.rates.source.exception.CurrencyPairNotSupported
@@ -28,6 +29,7 @@ class MainActivity(
     private val repositoryConnectionStatus: RepositoryConnectionStatus = SingletonAppObject.repositoryConnectionStatus,
     private val connectStatusManager: ConnectStatusManager = SingletonAppObject.connectStatusManager,
     private val currencySourceManager: CurrencySourceManager = SingletonAppObject.currencySourceManager,
+    private val appSettings: AppSettings = SingletonAppObject.appSetting
 ) : AppCompatActivity(), ActivityExchange.ExchangerHandler {
     companion object {
         const val TAG = "MainActivity"
@@ -73,11 +75,11 @@ class MainActivity(
 
 
         sharedActivityViewModel.onFromCurrencyTap.observe(this) {
-            navigateToCurrencyFragment()
+            onPrimarySelected()
         }
 
         sharedActivityViewModel.onToCurrencyTap.observe(this) {
-            navigateToCurrencyFragment()
+            onSecondSelected()
         }
 
         connectStatusManager.isConnect.observe(this) {
@@ -122,16 +124,16 @@ class MainActivity(
         Navigator(supportFragmentManager).toConnections()
     }
 
-    private fun navigateToCurrencyFragment() {
-        Navigator(supportFragmentManager).toCurrencies()
+    private fun navigateToCurrencyFragment(queryHint: String) {
+        Navigator(supportFragmentManager).toCurrencies(queryHint)
     }
 
     override fun onPrimarySelected() {
-        navigateToCurrencyFragment()
+        navigateToCurrencyFragment(appSettings.lastUsedCurrencyFirst.value!!.name)
     }
 
     override fun onSecondSelected() {
-        navigateToCurrencyFragment()
+        navigateToCurrencyFragment(appSettings.lastUsedCurrencySecond.value!!.name)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

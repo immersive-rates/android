@@ -18,7 +18,7 @@ class CurrencyViewModel(
 
     private lateinit var activity: ActivityCurrency
 
-`    private lateinit var currencyCarriage: MutableLiveData<SharedExchangeViewModel.CurrencyCarriage>
+    private lateinit var currencyCarriage: MutableLiveData<SharedExchangeViewModel.CurrencyCarriage>
 
     fun bindActivity(activity: ActivityCurrency) {
         this.activity = activity
